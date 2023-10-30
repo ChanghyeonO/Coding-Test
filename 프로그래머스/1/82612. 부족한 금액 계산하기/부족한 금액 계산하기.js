@@ -9,12 +9,7 @@ function solution(price, money, count) {
     const afterPay = money - addPrice;
     const deleteMinus = Math.abs(afterPay);
      
-    if(afterPay < 0) {
-         answer = deleteMinus;
-    }else if(afterPay > 0) {
-        answer == 0;
-    }
-    
+    afterPay > 0 ? answer == 0 : answer = deleteMinus;
 
 
     return answer;
