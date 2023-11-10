@@ -1,9 +1,10 @@
 function solution(s) {
     
-    const answer = s.split(" ")
-    .map(a => a.charAt(0).toUpperCase()+a.slice(1).toLowerCase())
-    .join(" ");
-
+    let answer = [];
+    let a = s.split(" ")
+    for(let i = 0; i < a.length; i++){
+        answer.push(a[i].charAt(0).toUpperCase() + a[i].slice(1).toLowerCase())
+    }
     
-    return answer;
+    return answer.join(' ');
 }
