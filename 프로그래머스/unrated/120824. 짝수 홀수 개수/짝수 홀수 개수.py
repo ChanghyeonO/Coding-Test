@@ -1,13 +1,9 @@
 def solution(num_list):
-    answer = []
-    a = []
-    b = []
+    answer = [0,0]
     for i in num_list:
         if i % 2 == 0:
-            a.append(i)
+            answer[0] += 1
         else:
-            b.append(i)
-    answer.append(len(a))
-    answer.append(len(b))
+            answer[1] += 1
     
     return answer
