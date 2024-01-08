@@ -1,7 +1,9 @@
+from collections import deque
+
 def solution(numbers, direction):
-    answer = []
+    numbers = deque(numbers)
     if direction == "right":
-        answer = [numbers[-1]] + numbers[:-1]
+        numbers.rotate(1)
     elif direction == 'left':
-        answer = numbers[1:] + [numbers[0]]
-    return answer
+        numbers.rotate(-1)
+    return list(numbers)
