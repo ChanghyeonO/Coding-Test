@@ -1,32 +1,31 @@
 import sys
 input = sys.stdin.readline
 
-def find_minimum_moves():
+def calculate_knight_moves():
     dx = [1, 2, 2, 1, -1, -2, -2, -1]
     dy = [-2, -1, 1, 2, 2, 1, -1, -2]
 
-    I = int(input())
-    board = [[0 for _ in range(I)] for _ in range(I)]
-    st_x, st_y = map(int, input().split())
-    ed_x, ed_y = map(int, input().split())
+    board_size = int(input())
+    board = [[0 for _ in range(board_size)] for _ in range(board_size)]
+    start_x, start_y = map(int, input().split())
+    end_x, end_y = map(int, input().split())
 
-    if st_x == ed_x and st_y == ed_y:
+    if start_x == end_x and start_y == end_y:
         return 0
 
-    bfs = [(st_y, st_x)]
-    while bfs:
-        buf = []
-        for y, x in bfs:
-            for i in range(8):
-                nx, ny = x + dx[i], y + dy[i]
-                if 0 <= nx < I and 0 <= ny < I and board[ny][nx] == 0:
-                    board[ny][nx] = board[y][x] + 1
-                    buf.append((ny, nx))
-                    if nx == ed_x and ny == ed_y:
-                        return board[ny][nx]
-        bfs = buf
+    queue = [(start_y, start_x)]
+    while queue:
+        current_y, current_x = queue.pop(0)
+        for i in range(8):
+            next_x, next_y = current_x + dx[i], current_y + dy[i]
+            if 0 <= next_x < board_size and 0 <= next_y < board_size and board[next_y][next_x] == 0:
+                board[next_y][next_x] = board[current_y][current_x] + 1
+                queue.append((next_y, next_x))
+                if next_x == end_x and next_y == end_y:
+                    return board[next_y][next_x]
 
-T = int(input())
-for _ in range(T):
-    print(find_minimum_moves())
+test_cases = int(input())
+for _ in range(test_cases):
+    print(calculate_knight_moves())
+
 
