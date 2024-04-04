@@ -1,19 +1,12 @@
 function solution(arr, n) {
-    var answer = [];
-    for(let i = 0; i< arr.length; i++){
-        if(arr.length % 2 !== 0){
-          if(i % 2 !== 0){
-              answer.push(arr[i])
-          }else if(i % 2 == 0){
-              answer.push(arr[i] + n)
-          }
-        }else if(arr.length % 2 == 0){
-           if(i % 2 == 0){
-              answer.push(arr[i])
-          }else if(i % 2 !== 0){
-              answer.push(arr[i] + n)
-          }
+    const isLengthOdd = arr.length % 2 !== 0;
+    
+    const answer = arr.map((value, index) => {
+        if ((isLengthOdd && index % 2 === 0) || (!isLengthOdd && index % 2 !== 0)) {
+            return value + n;
         }
-    }
+        return value;
+    });
+    
     return answer;
 }
