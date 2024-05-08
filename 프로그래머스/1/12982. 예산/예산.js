@@ -6,6 +6,8 @@ function solution(d, budget) {
         if(budgetRemain - sortArr[i] >= 0){
             budgetRemain -= sortArr[i]
             answer += 1
+        }else{
+            break;
         }
     }
     return answer;
